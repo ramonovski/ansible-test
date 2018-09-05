@@ -1,0 +1,16 @@
+---
+- name: Create a new Demo EC2 instance
+  hosts: localhost
+  connection: local
+  become: False
+  gather_facts: False
+  
+  vars:
+    region: us-west-1
+    instance_type: t2.micro
+    ami: ami-059e7901352ebaef8
+    security_group: ansible-webserver 
+    keypair: test_andible
+
+  roles:
+    - aws

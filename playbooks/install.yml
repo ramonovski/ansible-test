@@ -1,0 +1,12 @@
+---
+- hosts: webserver
+  remote_user: ubuntu
+  become: true   
+  become_method: sudo
+  tasks:
+    - name: install basic apps
+      action: >
+        {{ ansible_pkg_mgr }} name = {{ item }} state = present update_cache = yes
+      with_items:
+        - python
+        - vim
